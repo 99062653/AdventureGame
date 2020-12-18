@@ -1,0 +1,59 @@
+body{
+    background-color: #000000;
+    font-family: 'Langar', cursive;
+}
+
+div#game-container{
+    margin: 0 auto;
+    width: 750px;
+    height: 500px;
+    border: 5px solid black;
+    background-color: white;
+    text-align: center;
+    background-repeat: repeat;
+    background-size: 800px 500px;
+}
+
+h1#title{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin: 0;
+    background-color: #000000;
+    color: #ff0000;
+    font-size: 50px;
+    font-weight: 500;
+}
+
+div#description{
+    margin-top: -25px;
+    margin-bottom: 500px;
+    color: #ff0000;
+}
+
+div#game-buttons{
+
+}
+
+button#button1, button#button2, button#button3{
+    border: none;
+    cursor: pointer;
+    color: #ffffff;
+    margin: 15px 15px 15px 15px;
+    font-size: 25px;
+    background-color: #ff0000;
+}
+
+button#button1:hover, button#button2:hover, button#button3:hover{
+    color: black;
+    background-color: red;
+}
+
+img#inventoryItem{
+    border: 1px solid black;
+    cursor: pointer;
+    width: 50px;
+    height: 75px;
+    position: relative;
+    bottom: 350px;
+    left: 75px;
+}
