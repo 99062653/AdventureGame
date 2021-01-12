@@ -11,8 +11,8 @@ var knop3 = document.getElementById("button3");
 var item = document.getElementById("inventoryItem");
 const randomcash = Math.floor(Math.random()* 25);
 const wassengeluk = Math.floor(Math.random()* 10);
-var poster = false;
-var steen = false;
+var inventory = ["steen" == 0, "poster"];
+inventory[1] = false;
 var openla = 0;
 var werkenpoints = 0;
 var werkenpointsvereist = Math.floor(Math.random() * 30);
@@ -45,7 +45,11 @@ function cell(){
 
     knop1.style.display = "initial";
     knop1.innerHTML = "Kijk in je la";
-    knop1.onclick = la;
+    if(openla == 2){
+        knop1.style.display = "none";
+    }else{
+        knop1.onclick = la;
+    }
 
     knop2.innerHTML = "Ga naar de kantine";
     knop2.onclick = kantine;
@@ -201,7 +205,7 @@ function veld(){
 function inventoryvol(){
     alert("Je hebt een poster opgepakt. Deze is waarschijnlijk handig voor de toekomst");
     item.style.display = "none";
-    poster = true;
+    inventory[1] = true;
 }
 
 function mannen(){
@@ -238,17 +242,20 @@ function winkel(){
 }
 
 function gekochtsteen(){
-    if(randomcash >= 5){
-        steen = true;
-        alert("Je hebt de steen gekocht.");
+    if(inventory[0] == 1){
+        alert("Je hebt al een steen.")
     }else{
-        alert("Je hebt niet genoeg geld.");
+        if(randomcash >= 5){
+            inventory[0]++;
+            alert("Je hebt de steen gekocht.");
+        }else{
+            alert("Je hebt niet genoeg geld.");
+        }
     }
 }
 
 function gekochtcrack(){
     if(randomcash >= 10){
-        crack = true;
         alert("Je hebt de crack gekocht, en je gebruikt het gelijk.");
         game.style.backgroundImage = "url(images/dood.png)";
         desc.innerHTML = "Je bent dood.";
@@ -271,7 +278,7 @@ function celleinde(){
 }
 
 function muurslaan(){
-    if(steen == true){
+    if(inventory[0] == 1){
         knop1.innerHTML = "gebruik de steen om door de muur te slaan!";
         knop1.onclick = steenminigame;
     }else{
@@ -290,7 +297,7 @@ function steenminigame(){
     knop1.innerHTML = "kruip door";
     knop1.onclick = gepakt;
 
-    if(poster = true){
+    if(inventory[1] = true){
         knop2.style.display = "initial";
         knop2.innerHTML = "hang de poster voor het gat";
         knop2.onclick = victory;
